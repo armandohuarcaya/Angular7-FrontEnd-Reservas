@@ -1,0 +1,171 @@
+<div class="card">
+  <div class="">--- Mantenimiento de Clientes
+    <!-- <button class="btn btn-primary btn-sm " (click)="open(content)"  (click)="personClicked('#')"><i class="fa fa-trash" aria-hidden="true"></i>+</button> -->
+    <div class="row">
+      <div class="offset-md-8 col-md-4">
+        <div class="form-group">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Buscar Clientes" [(ngModel)]="queryString"
+            class="form-control form-control-sm" id="search">
+        </div>
+      </div>
+    </div>
+    <div class="card">
+
+      <body>
+
+        <div class="table-responsive">
+          <table class="table table-sm table-striped ">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Ape Paterno</th>
+                <th>Ape Materno</th>
+                <th>Edad</th>
+                <th>Fecha Naci</th>
+                <th>DNI</th>
+                <th>Correo</th>
+                <th>Celular</th>
+                <th>Foto del Cliente</th>
+                <th>Estado</th>
+                <th>Opcion</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let person of persons| FilterPipe: queryString : searchableList; let i=index"
+                [ngClass]="animateOnRouteEnter">
+                <td>{{i + 1}}</td>
+                <td>{{person.nombre}}</td>
+                <td>{{person.apePater}}</td>
+                <td>{{person.apeMater}}</td>
+                <td>{{person.edad}}</td>
+                <td>{{person.fecNacim}}</td>
+                <td>{{person.dni}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.celular}}</td>
+                <td><img src="{{person.image}}" width="30px" height="30px" /></td>
+                <td>{{person.estado}}</td>
+                <td>
+                  <button class="btn btn-success btn-sm" (click)="open(content)" (click)="personClicked(person)"><i
+                      class="fa fa-pencil"></i>E</button>
+                  <button class="btn btn-danger btn-sm" (click)="open(content2)" (click)="personClicked(person)"><i
+                      class="fa fa-trash"></i>D</button>
+                  <button class="btn btn-warning btn-sm" (click)="open(content3)" (click)="personClicked(person)"><i
+                      class="fa fa-eye"></i>V</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+          </ngb-pagination>
+        </div>
+      </body>
+    </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{title1}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div>
+            <label class="col-form-label required">Nombre: </label>
+            <input type="text" [(ngModel)]="selectedPerson.nombre" placeholder="Nombre">
+          </div>
+
+          <div>
+            <label class="col-form-label required">Ape Paterno: </label>
+            <input type="text" [(ngModel)]="selectedPerson.apePater" placeholder="Apellido Paterno">
+          </div>
+          <div>
+            <label class="col-form-label required">Ape Materno: </label>
+            <input type="text" [(ngModel)]="selectedPerson.apeMater" placeholder="Apellido Materno">
+          </div>
+          <div>
+            <label class="col-form-label required">Edad: </label>
+            <input type="number" [(ngModel)]="selectedPerson.edad" placeholder="Edad">
+          </div>
+
+          <div>
+            <label class="col-form-label required">FEcha Nac: </label>
+            <input type="text" [(ngModel)]="selectedPerson.fecNacim" placeholder="Nacimiento">
+          </div>
+          <div>
+            <label class="col-form-label required">Numero DNI: </label>
+            <input type="number" [(ngModel)]="selectedPerson.dni" placeholder="DNI">
+          </div>
+          <div>
+            <label class="col-form-label required">Correo: </label>
+            <input type="text" [(ngModel)]="selectedPerson.email" placeholder="Correo">
+          </div>
+          <div>
+            <label class="col-form-label required">Celular: </label>
+            <input type="number" [(ngModel)]="selectedPerson.celular" placeholder="Celular">
+          </div>
+          <div>
+            <label class="col-form-label required">Esado: </label>
+            <input type="text" [(ngModel)]="selectedPerson.estado" placeholder="Estado">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="selectedPerson.id == -1" type="button" class="btn btn-outline-dark" (click)="c('Save click')"
+          (click)="createPersons(person)">Save</button>
+        <button *ngIf="selectedPerson.id != -1" type="button" class="btn btn-outline-dark" (click)="c('Save click')"
+          (click)="updatePersons(person)">Actualizar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancelar</button>
+      </div>
+    </ng-template>
+
+    <ng-template #content2 let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-basic-title2">{{title2}}</div>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card">
+        <div class="modal-body">
+          Estas Seguro Que vas a eliminar?
+        </div>
+      </div>
+      <button class="btn btn-outline-dark btn-sm" (click)="d('Cross click')">Cancelar</button>
+      <button class="btn btn-success btn-sm" *ngIf="selectedPerson.id != -1" (click)="deletePersons()"
+        (click)="c('Save click')">Aceptar</button>
+
+    </ng-template>
+
+    <ng-template #content3 let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title3">Datos Personales</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div>
+        <div class="modal-body ">
+          <div class="text-center">
+
+            <body>
+              Nombre: <input type="text" [(ngModel)]="selectedPerson.nombre" placeholder="Nombre"><br>
+              Paterno: <input type="text" [(ngModel)]="selectedPerson.apePater" placeholder="Paterno"><br>
+              Materno: <input type="text" [(ngModel)]="selectedPerson.apeMater" placeholder="Materno"><br>
+              Edad: <input type="text" [(ngModel)]="selectedPerson.edad" placeholder="Edad"><br>
+              Naciiento: <input type="text" [(ngModel)]="selectedPerson.fecNacim" placeholder="Nacimiento"><br>
+              DNI: <input type="text" [(ngModel)]="selectedPerson.dni" placeholder="DNI"><br>
+              Correo: <input type="text" [(ngModel)]="selectedPerson.email" placeholder="Correo"><br>
+              Celular: <input type="text" [(ngModel)]="selectedPerson.celular" placeholder="Celular"><br>
+              Estado: <input type="text" [(ngModel)]="selectedPerson.estado" placeholder="Estado">
+            </body>
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+  </div>
+</div>

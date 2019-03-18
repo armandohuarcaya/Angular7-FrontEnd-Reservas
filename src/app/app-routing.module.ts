@@ -6,11 +6,23 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DisplayDataComponent } from './pages/display-data/display-data.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { ClienteMantenimientoComponent } from './pages/cliente/cliente-mantenimiento/cliente-mantenimiento.component';
+import { ClienteRegistroComponent } from './pages/cliente/cliente-registro/cliente-registro.component';
 
 const routes: Routes = [
   {
     path: 'display-data',
     component: DisplayDataComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'cliente-mantenimiento',
+    component: ClienteMantenimientoComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'cliente-registro',
+    component: ClienteRegistroComponent,
     canActivate: [ AuthGuardService ]
   },
   {

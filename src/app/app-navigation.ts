@@ -17,5 +17,19 @@ export const navigation = [
         path: '/display-data'
       }
     ]
+  },
+  {
+    text: 'Clientes',
+    icon: 'user',
+    items: [
+      {
+        text: 'Cliente Crud',
+        path: '/cliente-mantenimiento'
+      },
+      {
+        text: 'Cliente Registro',
+        path: '/cliente-registro'
+      }
+    ]
   }
 ];

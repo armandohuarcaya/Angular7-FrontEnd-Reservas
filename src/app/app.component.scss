@@ -1,7 +1,9 @@
 :host {
   @import "../themes/generated/variables.base.scss";
-  background-color: darken($base-bg, 5.00);
+  background: url(../assets/image/peota1.jpg);
   display: flex;
   height: 100%;
   width: 100%;
+
 }
+

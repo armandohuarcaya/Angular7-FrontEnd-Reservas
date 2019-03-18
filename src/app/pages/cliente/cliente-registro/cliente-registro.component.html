@@ -1,0 +1,82 @@
+<div class="content-block dx-card responsive-paddings">
+<div class="container">
+  <div class="card-header">
+<p>Creando Clientes</p>
+  </div>
+
+  <form class="card-body" >
+    <div class="row">
+    
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Nombre</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Nombre" name="nombre" 
+        [(ngModel)]="selectedPerson.nombre">
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'nombre'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Apellido Paterno</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Apellido Paterno" name="apePater" 
+        [(ngModel)]="selectedPerson.apePater">
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'apePater'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Apellido Materno</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Apellido Materno" name="apeMater"
+        [(ngModel)]="selectedPerson.apeMater" >
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'apeMater'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Edad</label>
+        <input class="form-control form-control-sm" type="number" placeholder="Edad" name="edad"
+        [(ngModel)]="selectedPerson.edad"  >
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'edad'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Fecha Nacimiento</label>
+        <div class="input-group">
+          <input class="form-control form-control-sm" placeholder="año-mes-dia" name="fecNacim"
+          [(ngModel)]="selectedPerson.fecNacim" >
+          <!-- <div class="input-group-append">
+            <button class="btn btn-outline-secondary fa fa-calendar" (click)="d.toggle()" type="button"></button>
+          </div> -->
+        </div>
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'fecha'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">DNI</label>
+        <input class="form-control form-control-sm" type="number" placeholder="DNI" name="dni" 
+        [(ngModel)]="selectedPerson.dni">
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'dni'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Correo</label>
+        <input class="form-control form-control-sm" type="email" placeholder="Correo" name="email"
+        [(ngModel)]="selectedPerson.email">
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'email'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Celular</label>
+        <input class="form-control form-control-sm" type="number" placeholder="Celular" name="celular"
+        [(ngModel)]="selectedPerson.celular" >
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'celular'"></lamb-show-error> -->
+      </div>
+      <div class="col-sm-3 form-group">
+        <label class="col-form-label required">Estado</label>
+        <input class="form-control form-control-sm" type="number" placeholder="estado" name="estado"
+        [(ngModel)]="selectedPerson.estado" >
+        <!-- <lamb-show-error [group]="personForm" [controlName]="'estado'"></lamb-show-error> -->
+      </div>
+      
+    </div>
+   <!--<button class="dropdown-item" (click)="getFormProveedores()">Proveedores</button>-->
+  </form>
+  
+  <!-- <div>
+      <button class="btn btn-dark btn-sm" (click)="limpiar()">Limpiar</button>
+      </div> -->
+    </div>
+    <div class="text-center card-footer">
+      <button class="btn btn-success btn-sm" (click)="createPersons()" (click)="limpiar()">Guardar</button>
+    
+      </div>
+</div>
