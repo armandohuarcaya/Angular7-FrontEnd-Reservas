@@ -8,6 +8,7 @@ import { DisplayDataComponent } from './pages/display-data/display-data.componen
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { ClienteMantenimientoComponent } from './pages/cliente/cliente-mantenimiento/cliente-mantenimiento.component';
 import { ClienteRegistroComponent } from './pages/cliente/cliente-registro/cliente-registro.component';
+import { ListComponent } from './pages/catalogo/components/list/list.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'cliente-registro',
     component: ClienteRegistroComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'list',
+    component: ListComponent,
     canActivate: [ AuthGuardService ]
   },
   {

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="content-block dx-card responsive-paddings">
   <div class="">--- Mantenimiento de Clientes
     <!-- <button class="btn btn-primary btn-sm " (click)="open(content)"  (click)="personClicked('#')"><i class="fa fa-trash" aria-hidden="true"></i>+</button> -->
     <div class="row">
@@ -10,14 +10,14 @@
         </div>
       </div>
     </div>
-    <div class="card">
+
 
       <body>
-
-        <div class="table-responsive">
-          <table class="table table-sm table-striped ">
+        <div class="offset-lg-25 col-lg-20">
+          <div class="table-responsive">
+              <table class="table table-sm table-bordered table-hover">
             <thead>
-              <tr>
+              <tr class="text-center">
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Ape Paterno</th>
@@ -25,9 +25,9 @@
                 <th>Edad</th>
                 <th>Fecha Naci</th>
                 <th>DNI</th>
-                <th>Correo</th>
+                <!-- <th>Correo</th> -->
                 <th>Celular</th>
-                <th>Foto del Cliente</th>
+                <th>Foto</th>
                 <th>Estado</th>
                 <th>Opcion</th>
 
@@ -35,7 +35,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let person of persons| FilterPipe: queryString : searchableList; let i=index"
-                [ngClass]="animateOnRouteEnter">
+                [ngClass]="animateOnRouteEnter" class="text-center">
                 <td>{{i + 1}}</td>
                 <td>{{person.nombre}}</td>
                 <td>{{person.apePater}}</td>
@@ -43,7 +43,7 @@
                 <td>{{person.edad}}</td>
                 <td>{{person.fecNacim}}</td>
                 <td>{{person.dni}}</td>
-                <td>{{person.email}}</td>
+                <!-- <td>{{person.email}}</td> -->
                 <td>{{person.celular}}</td>
                 <td><img src="{{person.image}}" width="30px" height="30px" /></td>
                 <td>{{person.estado}}</td>
@@ -62,8 +62,11 @@
           <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
           </ngb-pagination>
         </div>
+        </div>
+        
       </body>
-    </div>
+  
+      
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">{{title1}}</h4>

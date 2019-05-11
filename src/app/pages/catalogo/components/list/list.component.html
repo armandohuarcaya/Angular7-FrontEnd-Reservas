@@ -1,0 +1,38 @@
+<div class="content-block dx-card responsive-paddings"><br><br>
+  <div class="offset-lg-1 col-lg-10">
+      <div class="table-responsive">
+          <table class="table table-sm table-bordered table-hover">
+              <thead>
+                  <tr class="font-weight-bold" class="text-center">
+                      <th rowspan="3">#</th>
+                      <th rowspan="3">Nombre</th>
+                      <!-- <th rowspan="3">plan</th> -->
+                      <th rowspan="3">Foto</th>
+                      <!-- <th rowspan="3">Restriccion</th> -->
+                      <th rowspan="3">Descripcion</th>
+                      <th>Estado</th>
+                      <th rowspan="1" class="text-center">Opc</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let deta of catalogos; let i=index" class="text-center">
+                      <td>{{i+1}} </td>
+                      <td> {{deta.nombre}}</td>
+                      <td><img src="{{deta.image}}" width="30px" height="30px" /></td>
+                      <td>{{deta.descripcion}} </td>
+                      <td>{{ deta.estado}}</td>
+                      <td>
+                          <button class="btn btn-outline-danger btn-sm"
+                              >frd
+                          </button></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+  </div>
+</div>
+<div class="modal-footer">
+  <button  class="btn btn-primary btn-sm" >
+      Finalizar</button>
+</div>

@@ -31,5 +31,19 @@ export const navigation = [
         path: '/cliente-registro'
       }
     ]
+  },
+  {
+    text: 'Catalogos',
+    icon: 'folder',
+    items: [
+      {
+        text: 'Lista Catalogo',
+        path: 'list'
+      },
+      {
+        text: 'Vistas Catalogo',
+        path: ''
+      }
+    ]
   }
 ];
